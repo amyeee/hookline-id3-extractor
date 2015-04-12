@@ -1,17 +1,16 @@
-require 'id3tag'
+require 'id3_data'
 
 class Id3Extractor
   def self.extract_id3_data(mp3_path)
-    mp3_file = File.open(mp3_path, 'rb')
-    id3_tag  = ID3Tag.read(mp3_file)
+    id3_data = Id3Data.new(mp3_path)
 
     track_attributes = {
-      artist:       id3_tag.artist,
-      title:        id3_tag.title,
-      album:        id3_tag.album,
-      year:         id3_tag.year,
-      track_number: id3_tag.track_nr,
-      genre:        id3_tag.genre
+      artist:       id3_data.artist,
+      title:        id3_data.title,
+      album:        id3_data.album,
+      year:         id3_data.year,
+      track_number: id3_data.track_nr,
+      genre:        id3_data.genre
     }
 
     return track_attributes
