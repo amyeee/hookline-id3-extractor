@@ -4,7 +4,7 @@ require 'track_creator'
 
 puts "Monitoring #{TRACK_DIRECTORY} for new tracks"
 
-FileWatcher.new(File.join(TRACK_DIRECTORY, '*.mp3')).watch do |filename|
+FileWatcher.new(File.join(TRACK_DIRECTORY, '**/*.mp3')).watch do |filename|
   mp3_path = File.expand_path(filename)
   next unless File.exists?(mp3_path)
 
