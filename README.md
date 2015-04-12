@@ -8,7 +8,7 @@ Set both the database credentials and directory to watch in 'config/config.yml'.
 
 ### Running at start-up
 
-Copy or symlink the plist in this directory to ~/Library/LaunchAgents.
+Run `rake install_launchctl_script` to create a launchd script that starts the ruby process on boot.
 
 ### Set-up
 
