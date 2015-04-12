@@ -6,6 +6,10 @@ Ruby script that monitors a configurable directory for mp3 files. When files are
 
 Set both the database credentials and directory to watch in 'config/config.yml'.
 
+### Running at start-up
+
+Copy or symlink the plist in this directory to ~/Library/LaunchAgents.
+
 ### Set-up
 
 Create a database and table using schema.sql.
