@@ -1,4 +1,8 @@
+DROP DATABASE hookline;
+
 CREATE DATABASE hookline;
+
+USE hookline;
 
 CREATE TABLE tracks (
   id INTEGER NOT NULL AUTO_INCREMENT,

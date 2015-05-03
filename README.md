@@ -12,4 +12,9 @@ Run `rake install_launchctl_script` to create a launchd script that starts the r
 
 ### Set-up
 
-Create a database and table using schema.sql.
+Create a database and tables using schema.sql.
+
+__NOTE.__ This will drop and recreate the database from scratch.
+
+    $ mysql -uroot < schema.sql
+
