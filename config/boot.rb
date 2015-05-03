@@ -4,6 +4,10 @@ $: << File.join(APP_ROOT, 'lib')
 require 'bundler/setup'
 require 'active_record'
 require 'yaml'
+require 'logger'
+
+log_path = File.join(APP_ROOT, 'log/hookline.log')
+LOGGER = Logger.new(log_path)
 
 config_filename = File.expand_path('../config.yml', __FILE__)
 config = YAML.load(File.read(config_filename))
