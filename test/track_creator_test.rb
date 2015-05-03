@@ -20,6 +20,12 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     FileUtils.rm temporary_mp3_path
   end
 
+  def test_should_raise_error_if_the_artist_metadata_is_unavailable
+    assert_raise(ActiveRecord::RecordInvalid) do
+      TrackCreator.create_or_update_for(temporary_mp3_path)
+    end
+  end
+
   def test_should_create_new_artist_and_track
     TagLib::MPEG::File.open(temporary_mp3_path) do |file|
       tag = file.tag
