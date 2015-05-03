@@ -1,6 +1,6 @@
 require 'taglib'
 
-class Id3Data
+class Mp3Data
   attr_reader :artist
   attr_reader :title
   attr_reader :album

@@ -1,21 +1,21 @@
-require 'id3_data'
+require 'mp3_data'
 
 class Id3Extractor
-  def self.extract_id3_data(mp3_path)
-    id3_data = Id3Data.new(mp3_path)
+  def self.extract_mp3_data(mp3_path)
+    mp3_data = Mp3Data.new(mp3_path)
 
     track_attributes = {
-      artist:                         id3_data.artist,
-      title:                          id3_data.title,
-      album:                          id3_data.album,
-      year:                           id3_data.year,
-      track_number:                   id3_data.track_number,
-      genre:                          id3_data.genre,
-      composer:                       id3_data.composer,
-      duration_in_seconds:            id3_data.duration_in_seconds,
-      bitrate_in_kilobits_per_second: id3_data.bitrate_in_kilobits_per_second,
-      channels:                       id3_data.channels,
-      sample_rate_in_hertz:           id3_data.sample_rate_in_hertz
+      artist:                         mp3_data.artist,
+      title:                          mp3_data.title,
+      album:                          mp3_data.album,
+      year:                           mp3_data.year,
+      track_number:                   mp3_data.track_number,
+      genre:                          mp3_data.genre,
+      composer:                       mp3_data.composer,
+      duration_in_seconds:            mp3_data.duration_in_seconds,
+      bitrate_in_kilobits_per_second: mp3_data.bitrate_in_kilobits_per_second,
+      channels:                       mp3_data.channels,
+      sample_rate_in_hertz:           mp3_data.sample_rate_in_hertz
     }
 
     return track_attributes
