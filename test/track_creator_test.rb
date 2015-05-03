@@ -26,6 +26,28 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     end
   end
 
+  def test_should_create_artist_and_track_with_no_metadata
+    TagLib::MPEG::File.open(temporary_mp3_path) do |file|
+      tag = file.tag
+      tag.artist = 'artist-string'
+      file.save
+    end
+
+    TrackCreator.create_or_update_for(temporary_mp3_path)
+
+    assert_equal 1, Artist.count
+    assert_equal 1, Artist.first.tracks.length
+    assert_equal 'artist-string', Artist.first.name
+
+    assert_equal 1, Track.count
+    assert_equal 'empty-id3-tags.temporary.mp3', Track.first.filename
+    assert_nil Track.first.album
+    assert_nil Track.first.title
+    assert_equal 0, Track.first.year
+    assert_equal 0, Track.first.track_number
+    assert_nil Track.first.genre
+  end
+
   def test_should_create_new_artist_and_track
     TagLib::MPEG::File.open(temporary_mp3_path) do |file|
       tag = file.tag
