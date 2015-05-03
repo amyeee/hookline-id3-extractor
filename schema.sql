@@ -7,6 +7,8 @@ USE hookline;
 CREATE TABLE artists (
   id INTEGER NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL,
   PRIMARY KEY(id)
 );
 
@@ -19,6 +21,8 @@ CREATE TABLE tracks (
   year INTEGER,
   track_number INTEGER,
   genre VARCHAR(255),
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL,
   PRIMARY KEY(id),
   UNIQUE (filename)
 );
