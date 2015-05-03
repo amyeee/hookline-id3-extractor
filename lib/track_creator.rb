@@ -1,11 +1,11 @@
-require 'id3_extractor'
+require 'mp3_data_extractor'
 require 'artist'
 require 'track'
 
 class TrackCreator
   def self.create_or_update_for(mp3_path)
     mp3_filename = File.basename(mp3_path)
-    track_data   = Id3Extractor.extract_mp3_data(mp3_path)
+    track_data   = Mp3DataExtractor.extract_mp3_data(mp3_path)
     artist_name  = track_data.delete(:artist)
     artist       = Artist.find_or_create_by!(name: artist_name)
     track_data.merge!(artist: artist)

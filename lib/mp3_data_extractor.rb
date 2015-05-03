@@ -1,6 +1,6 @@
 require 'mp3_data'
 
-class Id3Extractor
+class Mp3DataExtractor
   def self.extract_mp3_data(mp3_path)
     mp3_data = Mp3Data.new(mp3_path)
 
