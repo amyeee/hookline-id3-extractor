@@ -8,5 +8,10 @@ FileWatcher.new(File.join(TRACK_DIRECTORY, '**/*.mp3')).watch do |filename|
   mp3_path = File.expand_path(filename)
   next unless File.exists?(mp3_path)
 
-  TrackCreator.create_or_update_for(mp3_path)
+  begin
+    TrackCreator.create_or_update_for(mp3_path)
+  rescue ActiveRecord::RecordInvalid
+    puts "Artist not found in #{mp3_path}"
+    puts "Skipping in the hope that it's caused by reading a partially copied file"
+  end
 end
