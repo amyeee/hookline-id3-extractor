@@ -39,7 +39,7 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     assert_equal 'artist-string', Artist.first.name
 
     assert_equal 1, Track.count
-    assert_equal 'test.temporary.mp3', Track.first.filename
+    assert_equal 'empty-id3-tags.temporary.mp3', Track.first.filename
     assert_equal 'album-string', Track.first.album
     assert_equal 'song-name-string', Track.first.title
     assert_equal 2015, Track.first.year
@@ -50,11 +50,11 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
   private
 
   def temporary_mp3_path
-    File.expand_path('../fixtures/test.temporary.mp3', __FILE__)
+    File.expand_path('../fixtures/empty-id3-tags.temporary.mp3', __FILE__)
   end
 
   def original_mp3_path
-    # The test.mp3 was downloaded from http://www.xamuel.com/blank-mp3s/
-    File.expand_path('../fixtures/test.mp3', __FILE__)
+    # The empty-id3-tags.mp3 was downloaded from http://www.xamuel.com/blank-mp3s/
+    File.expand_path('../fixtures/empty-id3-tags.mp3', __FILE__)
   end
 end
