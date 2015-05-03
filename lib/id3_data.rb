@@ -5,7 +5,7 @@ class Id3Data
   attr_reader :title
   attr_reader :album
   attr_reader :year
-  attr_reader :track_nr
+  attr_reader :track_number
   attr_reader :genre
   attr_reader :composer
   attr_reader :duration_in_seconds
@@ -20,7 +20,7 @@ class Id3Data
       @artist = tag.artist
       @album = tag.album
       @year = tag.year
-      @track_nr = tag.track
+      @track_number = tag.track
       @genre = tag.genre
 
       tag = file.id3v2_tag

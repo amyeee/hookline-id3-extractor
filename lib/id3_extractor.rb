@@ -9,7 +9,7 @@ class Id3Extractor
       title:                          id3_data.title,
       album:                          id3_data.album,
       year:                           id3_data.year,
-      track_number:                   id3_data.track_nr,
+      track_number:                   id3_data.track_number,
       genre:                          id3_data.genre,
       composer:                       id3_data.composer,
       duration_in_seconds:            id3_data.duration_in_seconds,
