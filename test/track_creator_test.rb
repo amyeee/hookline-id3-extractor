@@ -46,6 +46,7 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     assert_equal 0, Track.first.year
     assert_equal 0, Track.first.track_number
     assert_nil Track.first.genre
+    assert_equal 2, Track.first.duration_in_seconds
   end
 
   def test_should_create_new_artist_and_track
@@ -80,6 +81,7 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     assert_equal 3, Track.first.track_number
     assert_equal 'Blues', Track.first.genre
     assert_equal 'composer-string', Track.first.composer
+    assert_equal 2, Track.first.duration_in_seconds
   end
 
   private
