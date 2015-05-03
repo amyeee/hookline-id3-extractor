@@ -1,7 +1,13 @@
 ---
 :database:
-  :adapter: mysql2
-  :host: localhost
-  :username: root
-  :database: hookline
+  :production:
+    :adapter: mysql2
+    :host: localhost
+    :username: root
+    :database: hookline
+  :test:
+    :adapter: mysql2
+    :host: localhost
+    :username: root
+    :database: hookline_test
 :track_directory: '/path/to/track/directory'

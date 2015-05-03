@@ -6,3 +6,5 @@ gem 'filewatcher'
 gem 'id3tag'
 gem 'activerecord'
 gem 'mysql2'
+
+gem 'test-unit'

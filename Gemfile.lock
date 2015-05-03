@@ -23,6 +23,9 @@ GEM
     json (1.8.2)
     minitest (5.5.1)
     mysql2 (0.3.18)
+    power_assert (0.2.3)
+    test-unit (3.0.9)
+      power_assert
     thread_safe (0.3.5)
     trollop (2.1.2)
     tzinfo (1.2.2)
@@ -36,3 +39,4 @@ DEPENDENCIES
   filewatcher
   id3tag
   mysql2
+  test-unit

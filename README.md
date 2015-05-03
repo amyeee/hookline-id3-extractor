@@ -18,3 +18,6 @@ __NOTE.__ This will drop and recreate the database from scratch.
 
     $ mysql -uroot < schema.sql
 
+### Tests
+
+    $ ruby -Ilib test/*_test.rb

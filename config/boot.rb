@@ -8,7 +8,7 @@ require 'yaml'
 config_filename = File.expand_path('../config.yml', __FILE__)
 config = YAML.load(File.read(config_filename))
 
-connection_settings = config[:database]
+connection_settings = config[:database][:production]
 ActiveRecord::Base.establish_connection(connection_settings)
 
 track_directory = config[:track_directory]
