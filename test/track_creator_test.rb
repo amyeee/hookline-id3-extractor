@@ -47,6 +47,11 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     assert_equal 0, Track.first.track_number
     assert_nil Track.first.genre
     assert_equal 2, Track.first.duration_in_seconds
+    # I'm not sure how to programatically set the three values below which is
+    # why they're hardcoded for now.
+    assert_equal 128, Track.first.bitrate_in_kilobits_per_second
+    assert_equal 1, Track.first.channels
+    assert_equal 44100, Track.first.sample_rate_in_hertz
   end
 
   def test_should_create_new_artist_and_track
@@ -82,6 +87,11 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     assert_equal 'Blues', Track.first.genre
     assert_equal 'composer-string', Track.first.composer
     assert_equal 2, Track.first.duration_in_seconds
+    # I'm not sure how to programatically set the three values below which is
+    # why they're hardcoded for now.
+    assert_equal 128, Track.first.bitrate_in_kilobits_per_second
+    assert_equal 1, Track.first.channels
+    assert_equal 44100, Track.first.sample_rate_in_hertz
   end
 
   private
