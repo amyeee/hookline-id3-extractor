@@ -9,12 +9,14 @@ task :create_dbs do
   config_filename = File.expand_path('../config/config.yml', __FILE__)
   config = YAML.load(File.read(config_filename))
 
-  [:production, :test].each do |environment|
-    database = config[:database][environment][:database]
+  database_config = config[:database]
+  database_config.keys.each do |environment|
+    cfg = database_config[environment]
+    database = cfg[:database]
     template_filename = File.expand_path('../schema.sql.erb', __FILE__)
     template = File.read(template_filename)
     sql = ERB.new(template).result(binding)
-    `mysql -uroot -e"#{sql}"`
+    `mysql -u#{cfg[:username]} -p -h#{cfg[:host]} -e"#{sql}"`
   end
 end
 
