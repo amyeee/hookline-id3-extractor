@@ -21,6 +21,7 @@ CREATE TABLE tracks (
   year INTEGER,
   track_number INTEGER,
   genre VARCHAR(255),
+  version VARCHAR(255),
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL,
   PRIMARY KEY(id),
