@@ -12,6 +12,15 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
   def setup
     FileUtils.cp original_mp3_path, temporary_mp3_path
 
+    Artist.delete_all
+    Track.delete_all
+  end
+
+  def teardown
+    FileUtils.rm temporary_mp3_path
+  end
+
+  def test_should_create_new_artist_and_track
     TagLib::MPEG::File.open(temporary_mp3_path) do |file|
       tag = file.tag
       tag.artist = 'artist-string'
@@ -22,15 +31,6 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
       tag.genre = 'Blues'
       file.save
     end
-  end
-
-  def teardown
-    FileUtils.rm temporary_mp3_path
-  end
-
-  def test_should_create_new_artist_and_track
-    Artist.delete_all
-    Track.delete_all
 
     TrackCreator.create_or_update_for(temporary_mp3_path)
 
