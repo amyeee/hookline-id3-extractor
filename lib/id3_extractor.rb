@@ -10,7 +10,8 @@ class Id3Extractor
       album:        id3_data.album,
       year:         id3_data.year,
       track_number: id3_data.track_nr,
-      genre:        id3_data.genre
+      genre:        id3_data.genre,
+      composer:     id3_data.composer
     }
 
     return track_attributes

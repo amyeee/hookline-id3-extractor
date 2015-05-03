@@ -57,6 +57,12 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
       tag.year = 2015
       tag.track = 3
       tag.genre = 'Blues'
+
+      tag = file.id3v2_tag
+      tcom = TagLib::ID3v2::TextIdentificationFrame.new('TCOM', TagLib::String::UTF8)
+      tcom.text = 'composer-string'
+      tag.add_frame(tcom)
+
       file.save
     end
 
@@ -73,6 +79,7 @@ class TrackCreatorIntegrationTest < Test::Unit::TestCase
     assert_equal 2015, Track.first.year
     assert_equal 3, Track.first.track_number
     assert_equal 'Blues', Track.first.genre
+    assert_equal 'composer-string', Track.first.composer
   end
 
   private

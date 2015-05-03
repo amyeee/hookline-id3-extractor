@@ -7,6 +7,7 @@ class Id3Data
   attr_reader :year
   attr_reader :track_nr
   attr_reader :genre
+  attr_reader :composer
 
   def initialize(mp3_path)
     TagLib::MPEG::File.open(mp3_path) do |file|
@@ -17,6 +18,12 @@ class Id3Data
       @year = tag.year
       @track_nr = tag.track
       @genre = tag.genre
+
+      tag = file.id3v2_tag
+      composer_frame = tag.frame_list('TCOM')
+      unless composer_frame.empty?
+        @composer = composer_frame.first.field_list.first
+      end
     end
   end
 end
