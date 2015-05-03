@@ -1,27 +1,22 @@
-require 'id3tag'
+require 'taglib'
 
 class Id3Data
-  extend Forwardable
-  
-  def_delegator :@id3_tag, :artist
-  def_delegator :@id3_tag, :title
-  def_delegator :@id3_tag, :album
-  def_delegator :@id3_tag, :track_nr
-  def_delegator :@id3_tag, :genre
-  
+  attr_reader :artist
+  attr_reader :title
+  attr_reader :album
+  attr_reader :year
+  attr_reader :track_nr
+  attr_reader :genre
+
   def initialize(mp3_path)
-    mp3_file = File.open(mp3_path, 'rb')
-    @id3_tag = ID3Tag.read(mp3_file)
-  end
-  
-  def year
-    @id3_tag.year
-  rescue ID3Tag::Tag::MultipleFrameError => e
-    if e.message =~ /TDRC/
-      # If we have duplicate 'year' tags then choose the first
-      @id3_tag.get_frames(:TDRC).first.content
-    else
-      raise e
+    TagLib::MPEG::File.open(mp3_path) do |file|
+      tag = file.tag
+      @title = tag.title
+      @artist = tag.artist
+      @album = tag.album
+      @year = tag.year
+      @track_nr = tag.track
+      @genre = tag.genre
     end
   end
 end
