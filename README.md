@@ -2,6 +2,14 @@
 
 Ruby script that monitors a configurable directory for mp3 files. When files are added to the directory, the ID3 data is extracted and written to a MySQL database.
 
+### Prerequisites
+
+You'll need the [taglib][] library installed.
+
+    brew install taglib
+
+[taglib]: https://taglib.github.io/
+
 ### Configuration
 
 Set both the database credentials and directory to watch in 'config/config.yml'.
